@@ -9,7 +9,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
-
+#asd
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
@@ -58,3 +58,5 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+RealityShift/Library/ShaderCache/builtin/unity_builtin_extra0000/00/2001e5f08b58fdca98c368838ff08a2a.bin
+RealityShift/Library/
