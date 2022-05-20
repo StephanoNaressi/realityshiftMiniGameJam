@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyFollow : MonoBehaviour
@@ -20,7 +19,7 @@ public class EnemyFollow : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerInVisionRadius()) { isFollowing = true; }
+        if (playerInVisionRadius()) { isFollowing = true; }
         else if (isFollowing) { StartCoroutine(StopFollow()); }
 
         if (isFollowing)
@@ -40,7 +39,7 @@ public class EnemyFollow : MonoBehaviour
         }
     }
 
-    bool PlayerInVisionRadius()
+    bool playerInVisionRadius()
     {
         Vector2 distance = player.position - transform.position;
         float rotation = transform.localEulerAngles.y;
@@ -54,8 +53,7 @@ public class EnemyFollow : MonoBehaviour
     }
 
     private void OnDrawGizmosSelected()
-    {
-        
+    {     
         Gizmos.color = Color.red;
         float endPosX = transform.position.x + visionRadius.x * (transform.localEulerAngles.y == 180 ? -1 : 1);
         Gizmos.DrawLine(transform.position, new Vector3(endPosX, transform.position.y));

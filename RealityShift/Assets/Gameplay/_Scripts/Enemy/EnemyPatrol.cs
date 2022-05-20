@@ -10,12 +10,10 @@ public class EnemyPatrol : MonoBehaviour
     bool theGameIsRunning;
     int currentWalkPoint;
     Vector2 initialPos;
-    Rigidbody2D rig;
     EnemyMovementController movement;
 
     private void Start()
     {
-        rig = GetComponent<Rigidbody2D>();
         movement = GetComponent<EnemyMovementController>();
         initialPos = transform.position;
         theGameIsRunning = true;

@@ -25,10 +25,7 @@ public class EnemyMovementController : MonoBehaviour
                 speed = walkingSpeed;
                 GetComponent<EnemyPatrol>().Move();
             }
-            else
-            {
-                speed = runningSpeed;
-            }
+            else { speed = runningSpeed; }
         }
     }
 
