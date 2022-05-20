@@ -60,3 +60,5 @@ crashlytics-build.properties
 
 RealityShift/Library/ShaderCache/builtin/unity_builtin_extra0000/00/2001e5f08b58fdca98c368838ff08a2a.bin
 RealityShift/Library/
+RealityShift/Logs/
+RealityShift/Temp/
