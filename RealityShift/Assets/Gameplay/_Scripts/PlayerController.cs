@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             Jump();
         }
@@ -31,11 +31,25 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-       
+        Vector2 jump = new Vector2(playerRigid.velocity.x, jumpForce);
+
+        playerRigid.velocity = jump;
     }
 
     private void FixedUpdate()
     {
         playerRigid.velocity = new Vector2 (horizontal * moveSpeed, playerRigid.velocity.y);
     }
+
+    private bool IsGrounded()
+    {
+        Collider2D groundCheck = Physics2D.OverlapCircle(feet.position, 0.5f, groundLayer);
+
+        if (groundCheck)
+        {
+            return true;
+        }
+        return false;
+    }
+
 }
