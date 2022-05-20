@@ -14,6 +14,8 @@ public class EnemyMovement : MonoBehaviour
     Rigidbody2D rig;
     bool theGameIsRunning;
 
+    public float Damage;
+
     private void Start()
     {
         rig = GetComponent<Rigidbody2D>();
