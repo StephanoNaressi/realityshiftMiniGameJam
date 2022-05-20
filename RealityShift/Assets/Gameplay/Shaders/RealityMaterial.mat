@@ -41,6 +41,7 @@ Material:
     - _IsShift: 0
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _WaveSpeed: 0.48
     m_Colors: []
   m_BuildTextureStacks: []
 --- !u!114 &1460264286021319237
