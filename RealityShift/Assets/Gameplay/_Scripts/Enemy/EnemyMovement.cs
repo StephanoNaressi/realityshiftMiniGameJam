@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private List<Vector2> walkPoints = new List<Vector2>();
     [SerializeField] private float speed;
     [SerializeField] private bool move = true;
+    public float Damage;
     int currentWalkPoint;
     Vector2 initialPos;
     Rigidbody2D rig;
@@ -36,6 +37,14 @@ public class EnemyMovement : MonoBehaviour
             currentWalkPoint++;
             if (currentWalkPoint == walkPoints.Count) { currentWalkPoint = 0; }
         }
+    }
+
+    public void OnColliderEnter2D(Collider other)
+    {
+        if(!(other.gameObject.tag == "Player")) return;
+
+        PlayerController c = other.gameObject.GetComponent<PlayerController>();
+        c.AddHealth(Damage);
     }
 
     private void OnDrawGizmosSelected()

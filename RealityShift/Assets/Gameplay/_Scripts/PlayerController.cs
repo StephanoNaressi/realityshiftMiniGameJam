@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,15 +11,26 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform feet;
     [SerializeField] LayerMask groundLayer;
 
+    [SerializeField] public float HealthLeft;
+    [SerializeField] public float MaxHP;
+
     private Rigidbody2D playerRigid;
     float horizontal;
+
+    public RawImage img;
+    public PlayerController controller;
+
     
     void Start()
     {
         playerRigid = GetComponent<Rigidbody2D>();
     }
 
-    
+    public void AddHealth(float h)
+    {
+        HealthLeft += h;
+    }    
+
     void Update()
     {
         horizontal = Input.GetAxis("Horizontal");
@@ -27,7 +39,15 @@ public class PlayerController : MonoBehaviour
         {
             Jump();
         }
+
+        if(controller == null) controller = FindObjectOfType<PlayerController>();
+
+        float scale = HealthLeft/MaxHP ; //50
+
+        img.gameObject.GetComponent<RectTransform>().localScale=new Vector3(scale,1f,1f);
     }
+
+
 
     private void Jump()
     {
