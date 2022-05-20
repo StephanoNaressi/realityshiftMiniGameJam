@@ -15,6 +15,8 @@ public class EnemyPatrol : MonoBehaviour
     Rigidbody2D rig;
     EnemyMovementController movement;
 
+    public float Damage;
+
     private void Start()
     {
         rig = GetComponent<Rigidbody2D>();
@@ -38,6 +40,14 @@ public class EnemyPatrol : MonoBehaviour
             currentWalkPoint++;
             if (currentWalkPoint == walkPoints.Count) { currentWalkPoint = 0; }
         }
+    }
+
+    public void OnColliderEnter2D(Collider other)
+    {
+        if(!(other.gameObject.tag == "Player")) return;
+
+        PlayerController c = other.gameObject.GetComponent<PlayerController>();
+        c.AddHealth(Damage);
     }
 
     private void OnDrawGizmosSelected()
