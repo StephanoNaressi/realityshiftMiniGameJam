@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class TimeShiftScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    Material shaderM;
+    bool isShifted = false;
+    private void Update()
     {
-        
+        if (Input.GetButtonDown("realityShift"))
+        {
+            TimeShift();
+        }
     }
-
-    // Update is called once per frame
-    void Update()
+    void TimeShift()
     {
+        if (isShifted)
+        {
+            shaderM.SetFloat("_IsShift", 0f);
+            isShifted = false;
+        }
+        else
+        {
+            shaderM.SetFloat("_IsShift", 1f);
+            isShifted = true;
+        }
         
     }
 }
