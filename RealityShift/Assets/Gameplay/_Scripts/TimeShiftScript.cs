@@ -7,6 +7,8 @@ public class TimeShiftScript : MonoBehaviour
     [SerializeField]
     Material shaderM;
     bool isShifted = false;
+    [SerializeField]
+    GameObject hiddenLayer;
     private void Update()
     {
         if (Input.GetButtonDown("realityShift"))
@@ -22,6 +24,7 @@ public class TimeShiftScript : MonoBehaviour
             shaderM.SetFloat("_IsShift", 0f);
             //Set reality to normal
             isShifted = false;
+            hiddenLayer.SetActive(false);
         }
         else
         {
@@ -29,6 +32,7 @@ public class TimeShiftScript : MonoBehaviour
             shaderM.SetFloat("_IsShift", 1f);
             isShifted = true;
             //Add reality logic here!
+            hiddenLayer.SetActive(true);
         }
         
     }
