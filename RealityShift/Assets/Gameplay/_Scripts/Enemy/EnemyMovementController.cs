@@ -5,7 +5,7 @@ public class EnemyMovementController : MonoBehaviour
 {
     [SerializeField] private float walkingSpeed = 100;
     [SerializeField] private float runningSpeed = 150;
-    public float Damage;
+
     private float speed;
     Rigidbody2D rig;
 
@@ -35,14 +35,6 @@ public class EnemyMovementController : MonoBehaviour
         {
             transform.localEulerAngles = new Vector3(0, rig.velocity.x > 0 ? 0 : 180, 0);
         }
-    }
-
-    public void OnColliderEnter2D(Collider other)
-    {
-        if (!(other.gameObject.tag == "Player")) return;
-
-        PlayerController c = other.gameObject.GetComponent<PlayerController>();
-        c.AddHealth(Damage);
     }
 
     public void FollowObject(Vector2 objectPos)

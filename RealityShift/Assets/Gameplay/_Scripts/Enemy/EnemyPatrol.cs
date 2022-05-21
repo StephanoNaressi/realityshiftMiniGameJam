@@ -12,6 +12,9 @@ public class EnemyPatrol : MonoBehaviour
     Vector2 initialPos;
     EnemyMovementController movement;
 
+    public float Damage;
+
+
     private void Start()
     {
         movement = GetComponent<EnemyMovementController>();
@@ -22,6 +25,16 @@ public class EnemyPatrol : MonoBehaviour
     private void Update()
     {
         if (move) { Move(); }
+    }
+
+    public void OnCollisionEnter2D(Collision2D c)
+    {
+        GameObject co = c.gameObject;
+        if(co.tag == "Player")
+        {
+            PlayerController pc = co.GetComponent<PlayerController>();
+            pc.AddHealth(-Damage);
+        }
     }
 
     public void Move()
