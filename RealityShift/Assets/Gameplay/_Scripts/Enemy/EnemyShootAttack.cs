@@ -1,18 +1,23 @@
 using UnityEngine;
+using System.Collections;
 
 public class EnemyShootAttack : EnemyController
 {
     [SerializeField] private GameObject projectilPrefab;
     [SerializeField] private Vector2 attackRadius;
     [SerializeField] private Transform shootPoint;
+    [SerializeField] private float shootCooldown = 1f;
     private EnemyMovementController movement;
+    private bool canShoot = true;
 
     private void Start()
     {
         movement = GetComponent<EnemyMovementController>();
+        canShoot = true;
     }
     private void Update()
     {
+        if (!canShoot) { return; }
         if (playerInRadius(attackRadius))
         {
             Debug.Log("Deveria ter chamado");
@@ -23,9 +28,20 @@ public class EnemyShootAttack : EnemyController
 
     public void Shoot()//Called by Animator event
     {
-        GameObject projectil = Instantiate(projectilPrefab, shootPoint.transform.position, transform.rotation);
-        movement.BackMovement();
+        Instantiate(projectilPrefab, shootPoint.transform.position, transform.rotation);
         GetComponent<Animator>().ResetTrigger("Attack");
+        StartCoroutine(ShootRecover());
+    }
+
+    IEnumerator ShootRecover()
+    {
+        if (canShoot)
+        {
+            canShoot = false;
+            yield return new WaitForSeconds(shootCooldown);
+            canShoot = true;
+            if (!playerInRadius(attackRadius)) { movement.BackMovement(); }
+        }
     }
 
     private void OnDrawGizmosSelected()

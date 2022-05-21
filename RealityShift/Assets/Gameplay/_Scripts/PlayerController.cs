@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
     }
     void FixedUpdate()
     {
-        /*
+        
         if(UsingGravity) 
         {
             playerRigid.gravityScale = HowFastHeFalls;
@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
             playerRigid.gravityScale = 0;
             playerRigid.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         }
-        */
+        
     }
     void animationControl(int n)
     {
