@@ -135,8 +135,9 @@ GameObject:
   - component: {fileID: 280741451}
   - component: {fileID: 280741450}
   - component: {fileID: 280741449}
+  - component: {fileID: 280741452}
   m_Layer: 6
-  m_Name: Wall
+  m_Name: Telephone
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -281,15 +282,43 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 5, y: 6, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 5, y: 7, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 5
     m_Data: {fileID: 11400000, guid: 5da06296849dc9244a6bb37308ae63fc, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: cca6d6648217bb446a247deaab5c173b, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: f69255fea7a72b84882e295eed591071, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 5
     m_Data: {fileID: 21300000, guid: 0a382bb95a209d9448f174a351043c1d, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 505757777, guid: d6f69c73aad923541910e8b8c6e9ee44, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 1505767088, guid: d6f69c73aad923541910e8b8c6e9ee44, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 5
+  - m_RefCount: 7
     m_Data:
       e00: 1
       e01: 0
@@ -308,13 +337,13 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 5
+  - m_RefCount: 7
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -8, y: 0, z: 0}
-  m_Size: {x: 8, y: 6, z: 1}
+  m_Size: {x: 14, y: 8, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -334,6 +363,19 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &280741452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280741447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddef43da2fd7e6b478153669f9573529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  acutalLvl: 1
 --- !u!1 &625336362 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4666122775472852879, guid: de8d660902cf04248bb3f09ac22a1e1e, type: 3}
@@ -1314,7 +1356,7 @@ GameObject:
   - component: {fileID: 1122478150}
   - component: {fileID: 1122478149}
   - component: {fileID: 1122478148}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall (1)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -48583,6 +48625,50 @@ Transform:
   m_Father: {fileID: 986533940}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1646237027
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1646237028}
+  - component: {fileID: 1646237029}
+  m_Layer: 0
+  m_Name: Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1646237028
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646237027}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.2582817, y: 1.9610941, z: 0.07687948}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1646237029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646237027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253fbe33f488d9540bfcaa81ac2ae229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1776778028
 GameObject:
   m_ObjectHideFlags: 0
