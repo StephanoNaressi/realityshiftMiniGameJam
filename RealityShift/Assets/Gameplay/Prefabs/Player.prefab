@@ -256,6 +256,9 @@ MonoBehaviour:
     m_Bits: 64
   HealthLeft: 100
   MaxHP: 100
+  UsingGravity: 0
+  WallJumpForce: 0
+  WallCollider: {fileID: 0}
   img: {fileID: 4666122776838323256}
   controller: {fileID: 4666122775472852867}
   anim: {fileID: 8526892779055495316}
@@ -274,7 +277,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shaderM: {fileID: 2100000, guid: 1a91f8e43a9b7e54395cc8b3cd0399b1, type: 2}
   hiddenLayer: {fileID: 0}
+  timer: 0
   trail: {fileID: 4666122775472852865}
+  counterText: {fileID: 0}
+  cooldownBar: []
+  cooldownSprite: {fileID: 0}
 --- !u!96 &4666122775472852865
 TrailRenderer:
   serializedVersion: 2
@@ -423,7 +430,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 245580056, guid: 3064f072c0491b04bbdc06a9ce022f42, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
