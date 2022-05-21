@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
     public void AddHealth(float h)
     {
         HealthLeft += h;
-    }    
+    }
 
     void Update()
     {
@@ -50,21 +50,33 @@ public class PlayerController : MonoBehaviour
             playerSound.PlaySound(0);
             hasPlayed = true;
             Jump();
+            if (GetComponent<PlayerWallJump>().inWall)
+            {
+                GetComponent<PlayerWallJump>().WallJump();
+            }
         }
         else if (IsGrounded() && horizontal == 0)
         {
             animationControl(0);
-            
+
         }
 
-        float scale = HealthLeft/MaxHP ; //50
-        img.gameObject.GetComponent<RectTransform>().localScale=new Vector3(scale,1f,1f);
+        float scale = HealthLeft / MaxHP; //50
+        img.gameObject.GetComponent<RectTransform>().localScale = new Vector3(scale, 1f, 1f);
 
         //print(HealthLeft + ", scale: " + scale);
     }
+
+    private void FixedUpdate()
+    {
+        if (!GetComponent<PlayerWallJump>().inWall)
+        {
+            SetGravity();
+        }
+    }
     void playGroundSound()
     {
-        
+
         if (hasPlayed)
         {
             playerSound.PlaySound(1);
@@ -73,13 +85,8 @@ public class PlayerController : MonoBehaviour
     }
     private void Jump()
     {
-        
-    
-            Vector2 jump = new Vector2(playerRigid.velocity.x, jumpForce);
-            playerRigid.velocity = jump;
-            
-
-     
+        Vector2 jump = new Vector2(playerRigid.velocity.x, jumpForce);
+        playerRigid.velocity = jump;
     }
     void Run()
     {
@@ -97,7 +104,7 @@ public class PlayerController : MonoBehaviour
         {
             animationControl(3);
         }
-        
+        if (GetComponent<PlayerWallJump>().inWallJump) { return; }
         playerRigid.velocity = new Vector2(horizontal * moveSpeed, playerRigid.velocity.y);
     }
     void Flip()
@@ -117,16 +124,15 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            
+
             animationControl(1);
         }
         return false;
-        
+
     }
-    void FixedUpdate()
+    void SetGravity()
     {
-        
-        if(UsingGravity) 
+        if (UsingGravity)
         {
             playerRigid.gravityScale = HowFastHeFalls;
             playerRigid.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
@@ -136,7 +142,6 @@ public class PlayerController : MonoBehaviour
             playerRigid.gravityScale = 0;
             playerRigid.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         }
-        
     }
     void animationControl(int n)
     {
@@ -144,11 +149,11 @@ public class PlayerController : MonoBehaviour
         {
             case 0:
                 anim.Play("Idle");
-                
+
                 break;
             case 1:
                 anim.Play("buttSlide");
-                
+
                 break;
             case 2:
                 anim.Play("kneeSlide");
