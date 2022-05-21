@@ -7,6 +7,8 @@ public class StartManager : MonoBehaviour
 {
     public void Play(int index)
     {
+        bool isGoingToLevel = SceneManager.GetSceneByName("GameOver") != SceneManager.GetActiveScene();
+        if (isGoingToLevel) { PlayerPrefs.SetInt("currentLevel", index); }
         SceneManager.LoadScene(index);
     }
 
@@ -17,5 +19,10 @@ public class StartManager : MonoBehaviour
         #else
              Application.Quit();
         #endif
+    }
+
+    public void RetryLevel()
+    {
+        Play(PlayerPrefs.GetInt("currentLevel"));
     }
 }
