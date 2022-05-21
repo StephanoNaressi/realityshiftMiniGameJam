@@ -38,6 +38,10 @@ public class TimeShiftScript : MonoBehaviour
     }
     private void Update()
     {
+        if((shiftCount * 10 / 2) > 5)
+        {
+            print("YOUDIED");
+        }
         if (Input.GetButtonDown("realityShift"))
         {
             TimeShift();
