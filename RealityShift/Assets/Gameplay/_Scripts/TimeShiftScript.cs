@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using TMPro;
 public class TimeShiftScript : MonoBehaviour
 {
     [SerializeField]
@@ -17,14 +18,23 @@ public class TimeShiftScript : MonoBehaviour
     float shiftCount;
     [SerializeField]
     TrailRenderer trail;
+    [SerializeField]
+    TextMeshProUGUI counterText;
+
+    [SerializeField]
+    Sprite[] cooldownBar;
+    [SerializeField]
+    GameObject cooldownSprite;
     private void Start()
     {
+        
         trail.enabled = false;
         shiftCount = 0f;
         startingTimer = timer;
         isShifted = false;
         shaderM.SetFloat("_IsShift", 0f);
         shaderM.SetFloat("_TimesShifted", 0f);
+        counterText.text = (shiftCount * 10 / 2).ToString();
     }
     private void Update()
     {
@@ -37,8 +47,9 @@ public class TimeShiftScript : MonoBehaviour
         {
             timerF();
         }
-
-        
+        //((int)timer).ToString();
+        cooldownSprite.GetComponent<Image>().sprite = cooldownBar[Mathf.Clamp((int)timer, 0, 7)] ;
+       
     }
     bool timerF()
     {
@@ -53,6 +64,7 @@ public class TimeShiftScript : MonoBehaviour
             TimeShift();
             timer = startingTimer;
             shiftCount+= 0.2f;
+            counterText.text = (shiftCount * 10 / 2).ToString();
             shaderM.SetFloat("_TimesShifted", shiftCount);
             return false;
         }

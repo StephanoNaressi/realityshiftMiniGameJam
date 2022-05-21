@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 10;
@@ -30,6 +29,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     int HowFastHeFalls;
     private bool isFacingRight = true;
+
     void Start()
     {
         playerRigid = GetComponent<Rigidbody2D>();
