@@ -18,9 +18,7 @@ public class PlayerController : MonoBehaviour
     public bool UsingGravity;
     float horizontal;
 
-    public float WallJumpForce;
     bool hasPlayed = false;
-    public WallCollider WallCollider;
 
     public RawImage img;
     public PlayerController controller;
@@ -76,12 +74,12 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         
-        if (!WallCollider.IsWalling){
+    
             Vector2 jump = new Vector2(playerRigid.velocity.x, jumpForce);
             playerRigid.velocity = jump;
             
 
-        }
+     
     }
     void Run()
     {
