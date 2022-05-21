@@ -83,7 +83,7 @@ public class WallCollider : MonoBehaviour
                 CollidingWithWall = true;
             }
         }
-        print(CollidingWithWall);
+        //print(CollidingWithWall);
         IsWalling = CollidingWithWall;
         if(!CollidingWithWall)
         {
