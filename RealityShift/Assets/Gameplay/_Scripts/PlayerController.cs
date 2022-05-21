@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
+    SFXManager playerSound;
     [SerializeField] float moveSpeed = 10;
     [SerializeField] float jumpForce = 10;
     [SerializeField] Transform feet;
@@ -18,7 +19,7 @@ public class PlayerController : MonoBehaviour
     float horizontal;
 
     public float WallJumpForce;
-
+    bool hasPlayed = false;
     public WallCollider WallCollider;
 
     public RawImage img;
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        playerSound = gameObject.GetComponent<SFXManager>();
         playerRigid = GetComponent<Rigidbody2D>();
     }
 
@@ -47,26 +49,38 @@ public class PlayerController : MonoBehaviour
         if (controller == null) controller = FindObjectOfType<PlayerController>();
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            
+            playerSound.PlaySound(0);
+            hasPlayed = true;
             Jump();
         }
         else if (IsGrounded() && horizontal == 0)
         {
             animationControl(0);
+            
         }
 
         float scale = HealthLeft/MaxHP ; //50
         img.gameObject.GetComponent<RectTransform>().localScale=new Vector3(scale,1f,1f);
 
-        print(HealthLeft + ", scale: " + scale);
+        //print(HealthLeft + ", scale: " + scale);
     }
-
+    void playGroundSound()
+    {
+        
+        if (hasPlayed)
+        {
+            playerSound.PlaySound(1);
+            hasPlayed = false;
+        }
+    }
     private void Jump()
     {
-        if(!WallCollider.IsWalling){
+        
+        if (!WallCollider.IsWalling){
             Vector2 jump = new Vector2(playerRigid.velocity.x, jumpForce);
             playerRigid.velocity = jump;
             
+
         }
     }
     void Run()
@@ -100,10 +114,12 @@ public class PlayerController : MonoBehaviour
         Collider2D groundCheck = Physics2D.OverlapCircle(feet.position, 0.5f, groundLayer);
         if (groundCheck)
         {
+            playGroundSound();
             return true;
         }
         else
         {
+            
             animationControl(1);
         }
         return false;
@@ -130,9 +146,11 @@ public class PlayerController : MonoBehaviour
         {
             case 0:
                 anim.Play("Idle");
+                
                 break;
             case 1:
                 anim.Play("buttSlide");
+                
                 break;
             case 2:
                 anim.Play("kneeSlide");

@@ -78,15 +78,17 @@ public class TimeShiftScript : MonoBehaviour
             //Reality has been shifted
             shaderM.SetFloat("_IsShift", 0f);
             //Set reality to normal
+            gameObject.GetComponent<SFXManager>().PlaySound(3);
             trail.enabled = false;
             isShifted = false;
             hiddenLayer.SetActive(false);
+            
         }
         else
         {
             //Break the reality
             shaderM.SetFloat("_IsShift", 1f);
-            
+            gameObject.GetComponent<SFXManager>().PlaySound(2);
             trail.enabled = true;
             //Add reality logic here!
             isShifted = true;
