@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
         if(!WallCollider.IsWalling){
             Vector2 jump = new Vector2(playerRigid.velocity.x, jumpForce);
             playerRigid.velocity = jump;
+            
         }
     }
     void Run()
@@ -84,14 +85,14 @@ public class PlayerController : MonoBehaviour
         
         playerRigid.velocity = new Vector2(horizontal * moveSpeed, playerRigid.velocity.y);
     }
-    private void Flip()
+    void Flip()
     {
         isFacingRight = !isFacingRight;
         Vector3 localScale = transform.localScale;
         localScale.x *= -1f;
         transform.localScale = localScale;
     }
-    private bool IsGrounded()
+    bool IsGrounded()
     {
         Collider2D groundCheck = Physics2D.OverlapCircle(feet.position, 0.5f, groundLayer);
         if (groundCheck)
@@ -105,10 +106,18 @@ public class PlayerController : MonoBehaviour
         return false;
         
     }
-    private void FixedUpdate()
+    void FixedUpdate()
     {
-        if(UsingGravity) playerRigid.gravityScale = HowFastHeFalls;
-        else playerRigid.gravityScale = 0;
+        if(UsingGravity) 
+        {
+            playerRigid.gravityScale = HowFastHeFalls;
+            playerRigid.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
+        }
+        else
+        {
+            playerRigid.gravityScale = 0;
+            playerRigid.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        }
     }
     void animationControl(int n)
     {

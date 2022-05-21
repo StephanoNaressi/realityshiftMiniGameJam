@@ -8,6 +8,8 @@ public class WallCollider : MonoBehaviour
     public bool IsWalling;
     public int radius;
     public Vector2 Velocity1;
+
+    public Collider2D[] cols;
     void OnCollisionEnter2D(Collision2D c)
     {
         
@@ -72,7 +74,21 @@ public class WallCollider : MonoBehaviour
             rb.gravityScale = 1;
         }
 
-        Collider2D[] cols = Physics2D.OverlapCircleAll(Player.gameObject.transform.position,radius);
+        cols = Physics2D.OverlapCircleAll(Player.gameObject.transform.position,radius);
+        bool CollidingWithWall =  false;
+        foreach(Collider2D col in cols)
+        {
+            if(col.gameObject.tag == "Wall")
+            {
+                CollidingWithWall = true;
+            }
+        }
+        print(CollidingWithWall);
+        IsWalling = CollidingWithWall;
+        if(!CollidingWithWall)
+        {
+            Player.GetComponent<PlayerController>().UsingGravity = true;
+        }
     }
 
     float Odw(float a)

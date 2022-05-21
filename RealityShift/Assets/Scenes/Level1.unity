@@ -513,6 +513,10 @@ PrefabInstance:
       propertyPath: UsingGravity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4666122775472852867, guid: de8d660902cf04248bb3f09ac22a1e1e, type: 3}
+      propertyPath: WallCollider
+      value: 
+      objectReference: {fileID: 1706557770}
     - target: {fileID: 4666122775472852876, guid: de8d660902cf04248bb3f09ac22a1e1e, type: 3}
       propertyPath: m_RootOrder
       value: 2
