@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemyFollow : MonoBehaviour
+public class EnemyFollow : EnemyController
 {
     [SerializeField] private Vector2 visionRadius;
     [SerializeField] [Range(1, 10)] private float minTimeToStopFollow;
@@ -19,7 +19,7 @@ public class EnemyFollow : MonoBehaviour
 
     private void Update()
     {
-        if (playerInVisionRadius()) { isFollowing = true; }
+        if (playerInRadius(visionRadius)) { isFollowing = true; }
         else if (isFollowing) { StartCoroutine(StopFollow()); }
 
         if (isFollowing)
@@ -37,20 +37,7 @@ public class EnemyFollow : MonoBehaviour
             isStoppingFollow = false;
             isFollowing = false;
         }
-    }
-
-    bool playerInVisionRadius()
-    {
-        Vector2 distance = player.position - transform.position;
-        float rotation = transform.localEulerAngles.y;
-        bool enemyIsSeeingThePlayer = false;
-        if (Mathf.Abs(distance.x) <= visionRadius.x && Mathf.Abs(distance.y) <= visionRadius.y)
-        {
-            enemyIsSeeingThePlayer = distance.x > 0 && rotation == 0 || distance.x < 0 && rotation == 180;
-        }
-
-        return enemyIsSeeingThePlayer;
-    }
+    }    
 
     private void OnDrawGizmosSelected()
     {     

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class EnemyMovementController : MonoBehaviour
+public class EnemyMovementController : EnemyController
 {
     [SerializeField] private float walkingSpeed = 100;
     [SerializeField] private float runningSpeed = 150;
@@ -72,5 +72,18 @@ public class EnemyMovementController : MonoBehaviour
     {
         bool reachedInAxis = Mathf.Abs(objectAxis - enemyAxis) <= 0.1f;
         return reachedInAxis;
+    }
+
+    public void StopMovement()
+    {
+        if (GetComponent<EnemyFollow>()) { GetComponent<EnemyFollow>().enabled = false; }
+        if (GetComponent<EnemyPatrol>()) { GetComponent<EnemyPatrol>().enabled = false; }
+        rig.velocity = Vector2.zero;
+    }
+
+    public void BackMovement()
+    {
+        if (GetComponent<EnemyFollow>()) { GetComponent<EnemyFollow>().enabled = true; }
+        if (GetComponent<EnemyPatrol>()) { GetComponent<EnemyPatrol>().enabled = true; }
     }
 }

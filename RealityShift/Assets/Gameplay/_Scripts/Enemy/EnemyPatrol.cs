@@ -3,7 +3,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(EnemyMovementController))]
 [RequireComponent(typeof(Rigidbody2D))]
-public class EnemyPatrol : MonoBehaviour
+public class EnemyPatrol : EnemyController
 {
     [SerializeField] private List<Vector2> walkPoints = new List<Vector2>();
     [SerializeField] private bool move = true;
@@ -13,7 +13,6 @@ public class EnemyPatrol : MonoBehaviour
     EnemyMovementController movement;
 
     public float Damage;
-
 
     private void Start()
     {
