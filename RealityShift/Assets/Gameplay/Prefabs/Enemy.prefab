@@ -162,7 +162,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0.63016504, b: 0, a: 1}
   m_FlipX: 0
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkingSpeed: 100
   runningSpeed: 150
-  Damage: 0
+  enemyCanFly: 0
 --- !u!114 &3626535470692281814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,3 +267,4 @@ MonoBehaviour:
   - {x: 2, y: 0}
   - {x: -2, y: 0}
   move: 0
+  Damage: 0
