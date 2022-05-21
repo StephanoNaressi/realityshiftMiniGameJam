@@ -54,8 +54,11 @@ public class PlayerController : MonoBehaviour
         {
             animationControl(0);
         }
+
         float scale = HealthLeft/MaxHP ; //50
         img.gameObject.GetComponent<RectTransform>().localScale=new Vector3(scale,1f,1f);
+
+        print(HealthLeft + ", scale: " + scale);
     }
 
     private void Jump()
