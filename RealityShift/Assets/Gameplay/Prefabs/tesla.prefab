@@ -159,7 +159,7 @@ MonoBehaviour:
   - {x: 2, y: 0}
   - {x: -2, y: 0}
   move: 1
-  Damage: 0
+  Damage: 15
 --- !u!95 &4981494031873988740
 Animator:
   serializedVersion: 4

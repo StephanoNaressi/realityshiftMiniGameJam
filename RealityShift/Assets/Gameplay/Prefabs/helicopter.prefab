@@ -186,7 +186,7 @@ MonoBehaviour:
   - {x: 2, y: 4}
   - {x: 2, y: 0}
   move: 0
-  Damage: 0
+  Damage: 10
 --- !u!114 &5765275490097075058
 MonoBehaviour:
   m_ObjectHideFlags: 0
