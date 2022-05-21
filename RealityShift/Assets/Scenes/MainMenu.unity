@@ -1741,7 +1741,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 209146760}
   m_HandleRect: {fileID: 209146759}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 1.0000004
   m_Size: 0.6666667
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2035,7 +2035,7 @@ MonoBehaviour:
     -chancesus
 
 
-    Music:
+    Music/Svx:
 
     -Korat
 
