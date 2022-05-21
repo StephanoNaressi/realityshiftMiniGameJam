@@ -785,8 +785,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Programming\r\n------------\nDevEloper\r\nStephano\r\nChancesus\r\nIgor\r\n\r\nArtists
-    and Visual Design\r\n---------------\nSmokyBones22\r\neeltastical\r\nAlouette\r\nShana\r\n\r"
+  m_text: "Programming\r\n------------\nDevEloper\r\nStephano Naressi\nChancesus\r\nIgor\r\n\r\nArtists
+    and Visual Design\r\n---------------\nSmokyBones22\r\neeltastical\r\nAlouette\r\nShana001_Meena\n\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f423be5f91f70634cbfccaa159ff4a31, type: 2}
   m_sharedMaterial: {fileID: 6516646649108629805, guid: f423be5f91f70634cbfccaa159ff4a31, type: 2}
@@ -849,7 +849,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 38.388084, w: -191.5458}
+  m_margin: {x: 0, y: 0, z: 38.388084, w: -189.03851}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -929,10 +929,9 @@ MonoBehaviour:
 
     oldkingcrowe
 
-    
 
-    Sound
-    Design
+
+    Sound Design
 
     -------------
 
