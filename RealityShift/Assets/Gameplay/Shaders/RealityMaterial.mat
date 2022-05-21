@@ -38,10 +38,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _IsShift: 0
+    - _IsShift: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _TimesShifted: 0.8
+    - _TimesShifted: 0.2
     - _WaveSpeed: 0.48
     m_Colors: []
   m_BuildTextureStacks: []
