@@ -41,7 +41,7 @@ public class EnemyPatrol : MonoBehaviour
     {
         Vector2 finalPlace = walkPoints[currentWalkPoint] + initialPos;
         movement.FollowObject(finalPlace);
-        bool isReached = Mathf.Abs(transform.position.x - finalPlace.x) <= 0.1f;
+        bool isReached = movement.isReachedInObject(finalPlace, movement.enemyCanFly);
         if (isReached)
         {
             currentWalkPoint++;
