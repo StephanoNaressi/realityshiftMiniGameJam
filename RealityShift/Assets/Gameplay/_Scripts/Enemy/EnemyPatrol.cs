@@ -3,22 +3,19 @@ using UnityEngine;
 
 [RequireComponent(typeof(EnemyMovementController))]
 [RequireComponent(typeof(Rigidbody2D))]
-public class EnemyPatrol : MonoBehaviour
+public class EnemyPatrol : EnemyController
 {
     [SerializeField] private List<Vector2> walkPoints = new List<Vector2>();
     [SerializeField] private bool move = true;
     bool theGameIsRunning;
     int currentWalkPoint;
     Vector2 initialPos;
-    Rigidbody2D rig;
     EnemyMovementController movement;
 
     public float Damage;
 
-
     private void Start()
     {
-        rig = GetComponent<Rigidbody2D>();
         movement = GetComponent<EnemyMovementController>();
         initialPos = transform.position;
         theGameIsRunning = true;
@@ -43,7 +40,7 @@ public class EnemyPatrol : MonoBehaviour
     {
         Vector2 finalPlace = walkPoints[currentWalkPoint] + initialPos;
         movement.FollowObject(finalPlace);
-        bool isReached = Mathf.Abs(transform.position.x - finalPlace.x) <= 0.1f;
+        bool isReached = movement.isReachedInObject(finalPlace, movement.enemyCanFly);
         if (isReached)
         {
             currentWalkPoint++;

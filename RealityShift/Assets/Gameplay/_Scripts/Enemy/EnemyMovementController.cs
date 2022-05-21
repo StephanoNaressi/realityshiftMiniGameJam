@@ -1,10 +1,11 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class EnemyMovementController : MonoBehaviour
+public class EnemyMovementController : EnemyController
 {
     [SerializeField] private float walkingSpeed = 100;
     [SerializeField] private float runningSpeed = 150;
+    public bool enemyCanFly;
 
     private float speed;
     Rigidbody2D rig;
@@ -25,10 +26,7 @@ public class EnemyMovementController : MonoBehaviour
                 speed = walkingSpeed;
                 GetComponent<EnemyPatrol>().Move();
             }
-            else
-            {
-                speed = runningSpeed;
-            }
+            else { speed = runningSpeed; }
         }
     }
 
@@ -42,15 +40,50 @@ public class EnemyMovementController : MonoBehaviour
 
     public void FollowObject(Vector2 objectPos)
     {
-        float direction = 0;
-        if (transform.position.x > objectPos.x)
-        {
-            direction = -speed;
-        }
-        else if (transform.position.x < objectPos.x)
-        {
-            direction = speed;
-        }
-        rig.velocity = new Vector2(direction * Time.deltaTime, rig.velocity.y);
+        Vector2 direction = GetDirection(objectPos) * Time.deltaTime;
+        rig.velocity = new Vector2(direction.x, enemyCanFly ? direction.y : rig.velocity.y);
+    }
+
+    private Vector2 GetDirection(Vector2 objectPos)
+    {
+        bool reachedInX = isReachedInAxis(objectPos.x, transform.position.x);
+        bool reachedInY = isReachedInAxis(objectPos.y, transform.position.y);
+
+        float directionX = 0;
+        if (transform.position.x > objectPos.x) { directionX = -speed; }
+        else if (transform.position.x < objectPos.x) { directionX = speed; }
+
+        float directionY = 0;
+        if (transform.position.y > objectPos.y) { directionY = -speed; }
+        else if (transform.position.y < objectPos.y) { directionY = speed; }
+
+        Vector2 direction = new Vector2(!reachedInX ? directionX : 0, enemyCanFly && !reachedInY ? directionY : 0);
+        return direction;
+    }
+
+    public bool isReachedInObject(Vector2 objectPos, bool checkAxisY)
+    {
+        bool reachedInX = isReachedInAxis(objectPos.x, transform.position.x);
+        bool reachedInY = isReachedInAxis(objectPos.y, transform.position.y);
+        return checkAxisY ? reachedInX && reachedInY : reachedInX;
+    }
+
+    private bool isReachedInAxis(float objectAxis, float enemyAxis)
+    {
+        bool reachedInAxis = Mathf.Abs(objectAxis - enemyAxis) <= 0.1f;
+        return reachedInAxis;
+    }
+
+    public void StopMovement()
+    {
+        if (GetComponent<EnemyFollow>()) { GetComponent<EnemyFollow>().enabled = false; }
+        if (GetComponent<EnemyPatrol>()) { GetComponent<EnemyPatrol>().enabled = false; }
+        rig.velocity = Vector2.zero;
+    }
+
+    public void BackMovement()
+    {
+        if (GetComponent<EnemyFollow>()) { GetComponent<EnemyFollow>().enabled = true; }
+        if (GetComponent<EnemyPatrol>()) { GetComponent<EnemyPatrol>().enabled = true; }
     }
 }
