@@ -15,7 +15,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float MaxHP;
 
     private Rigidbody2D playerRigid;
+    public bool UsingGravity;
     float horizontal;
+
+    public float WallJumpForce;
+
+    public WallCollider WallCollider;
 
     public RawImage img;
     public PlayerController controller;
@@ -55,8 +60,10 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        Vector2 jump = new Vector2(playerRigid.velocity.x, jumpForce);
-        playerRigid.velocity = jump;
+        if(!WallCollider.IsWalling){
+            Vector2 jump = new Vector2(playerRigid.velocity.x, jumpForce);
+            playerRigid.velocity = jump;
+        }
     }
     void Run()
     {
@@ -100,7 +107,8 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        playerRigid.gravityScale = HowFastHeFalls;
+        if(UsingGravity) playerRigid.gravityScale = HowFastHeFalls;
+        else playerRigid.gravityScale = 0;
     }
     void animationControl(int n)
     {
