@@ -59,7 +59,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &4666122774859473898
 MonoBehaviour:
@@ -258,6 +258,7 @@ MonoBehaviour:
     m_Bits: 64
   HealthLeft: 100
   MaxHP: 100
+  damageTextPrefab: {fileID: 1810214693970967306, guid: 234a3b188e15c1a43ac921679b199286, type: 3}
   UsingGravity: 1
   img: {fileID: 4666122776838323256}
   controller: {fileID: 4666122775472852867}

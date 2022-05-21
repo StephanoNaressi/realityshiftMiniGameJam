@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class PlayerController : MonoBehaviour
 {
     SFXManager playerSound;
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] public float HealthLeft;
     [SerializeField] public float MaxHP;
+    [SerializeField] private GameObject damageTextPrefab;
 
     private Rigidbody2D playerRigid;
     public bool UsingGravity;
@@ -20,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
     bool hasPlayed = false;
 
-    public RawImage img;
+    public RawImage img; 
     public PlayerController controller;
 
     [SerializeField]
@@ -38,6 +40,10 @@ public class PlayerController : MonoBehaviour
     public void AddHealth(float h)
     {
         HealthLeft += h;
+        TextMeshProUGUI damageText = Instantiate(damageTextPrefab, img.transform.parent.transform).GetComponent<TextMeshProUGUI>();
+        damageText.text = h.ToString();
+        if (transform.localScale.x < 0) { damageText.transform.localScale *= new Vector2(-1, 1); }
+        Destroy(damageText.gameObject, 3f);
     }
 
     void Update()
@@ -113,6 +119,11 @@ public class PlayerController : MonoBehaviour
         Vector3 localScale = transform.localScale;
         localScale.x *= -1f;
         transform.localScale = localScale;
+        img.transform.parent.transform.localScale = new Vector2(-1, 1);
+        foreach (Transform t in img.transform.parent.GetComponentsInChildren<Transform>())
+        {
+            t.localScale *= new Vector2(-1, 1);
+        }
     }
     bool IsGrounded()
     {
