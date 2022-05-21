@@ -395,7 +395,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1821821392455186463, guid: 5e488592c5562594b93252ef795bcfba, type: 3}
       propertyPath: attackRadius.x
-      value: 1.18
+      value: 3.29
       objectReference: {fileID: 0}
     - target: {fileID: 4887559199564189218, guid: 5e488592c5562594b93252ef795bcfba, type: 3}
       propertyPath: m_RootOrder
