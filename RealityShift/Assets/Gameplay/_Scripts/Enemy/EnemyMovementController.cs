@@ -5,6 +5,7 @@ public class EnemyMovementController : MonoBehaviour
 {
     [SerializeField] private float walkingSpeed = 100;
     [SerializeField] private float runningSpeed = 150;
+
     private float speed;
     Rigidbody2D rig;
 
