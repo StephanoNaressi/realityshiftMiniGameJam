@@ -161,6 +161,7 @@ MonoBehaviour:
   wallDetection:
     serializedVersion: 2
     m_Bits: 192
+  wallDetectionRadius: 0.1
   wallDetectionOffset: {x: 0.21, y: 0}
   Damage: 10
 --- !u!114 &6141063857147656649

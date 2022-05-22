@@ -9,6 +9,7 @@ public class EnemyPatrol : EnemyController
     [SerializeField] private List<Vector2> walkPoints = new List<Vector2>();
     [SerializeField] private bool move = true;
     [SerializeField] private LayerMask wallDetection;
+    [SerializeField] private float wallDetectionRadius = 0.5f;
     [SerializeField] private Vector2 wallDetectionOffset;
     bool canChangeWalkpoint = true;
     bool theGameIsRunning;
@@ -29,7 +30,7 @@ public class EnemyPatrol : EnemyController
     private void Update()
     {
         if (move) { Move(); }
-        Collider2D wallDetectionCol = Physics2D.OverlapCircle(transform.position + (Vector3)wallDetectionOffset * (transform.localEulerAngles.y == 0 ? 1 : -1), 0.5f, wallDetection);
+        Collider2D wallDetectionCol = Physics2D.OverlapCircle(transform.position + (Vector3)wallDetectionOffset * (transform.localEulerAngles.y == 0 ? 1 : -1), wallDetectionRadius, wallDetection);
         if (wallDetectionCol) { ChangeWalkPoint(); }
     }
 
@@ -82,6 +83,6 @@ public class EnemyPatrol : EnemyController
             Gizmos.DrawSphere(initialPos + walkP, 0.1f);
         }
 
-        Gizmos.DrawWireSphere(transform.position + (Vector3)wallDetectionOffset * (transform.localEulerAngles.y == 0 ? 1 : -1), 0.1f);
+        Gizmos.DrawWireSphere(transform.position + (Vector3)wallDetectionOffset * (transform.localEulerAngles.y == 0 ? 1 : -1), wallDetectionRadius);
     }
 }
