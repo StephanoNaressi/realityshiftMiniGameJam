@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
         img.gameObject.GetComponent<RectTransform>().localScale = new Vector3(scale, 1f, 1f);
         if (HealthLeft <= 0)
         {
-            FindObjectOfType<LevelManager>().LoadNextLevel(4);
+            FindObjectOfType<LevelManager>().LostLevel();
         }
         //print(HealthLeft + ", scale: " + scale);
     }

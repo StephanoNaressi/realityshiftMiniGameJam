@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class TimeShiftScript : MonoBehaviour
 {
     [SerializeField]
@@ -42,7 +43,7 @@ public class TimeShiftScript : MonoBehaviour
         if((shiftCount * 10 / 2) >= shiftLives)
         {
             print("YOUDIED");
-            FindObjectOfType<LevelManager>().LostLevel();
+            SceneManager.LoadScene("GameOver");
         }
         if (Input.GetButtonDown("realityShift"))
         {

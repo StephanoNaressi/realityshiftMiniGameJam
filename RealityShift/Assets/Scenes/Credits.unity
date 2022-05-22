@@ -898,7 +898,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 253, y: 73.3}
+  m_AnchoredPosition: {x: 232.5, y: 73.3}
   m_SizeDelta: {x: 323.204, y: 53.005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &657459079
@@ -929,6 +929,12 @@ MonoBehaviour:
 
     oldkingcrowe
 
+    Stephano
+    Naressi
+
+    Igor
+
+    DevEloper
 
 
     Sound Design
@@ -936,8 +942,6 @@ MonoBehaviour:
     -------------
 
     Korat
-
-
 
     Music
 
@@ -2696,6 +2700,7 @@ MonoBehaviour:
   - {fileID: -1439869420, guid: 098f2b66bce8816439e15088b94e4857, type: 3}
   - {fileID: 884132352, guid: 098f2b66bce8816439e15088b94e4857, type: 3}
   cooldownSprite: {fileID: 1187218712}
+  shiftLives: 10
 --- !u!96 &4666122776358219857
 TrailRenderer:
   serializedVersion: 2
@@ -2852,10 +2857,14 @@ MonoBehaviour:
   MaxHP: 100
   damageTextPrefab: {fileID: 1810214693970967306, guid: 234a3b188e15c1a43ac921679b199286, type: 3}
   UsingGravity: 1
+  EscapeUI: {fileID: 8850119129327529168, guid: c0256bc85664e2c43bc2b450f9bbda78, type: 3}
+  sc: {fileID: 4666122776358219856}
   img: {fileID: 4666122775542694888}
   controller: {fileID: 4666122776358219859}
   anim: {fileID: 8526892779906369348}
   HowFastHeFalls: 52
+  Cores: 0
+  Coins: 0
 --- !u!4 &4666122776358219868
 Transform:
   m_ObjectHideFlags: 0
