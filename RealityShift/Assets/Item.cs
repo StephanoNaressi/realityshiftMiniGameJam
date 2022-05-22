@@ -21,7 +21,15 @@ public class Item : MonoBehaviour
 
     void PickUp()
     {
-        controller.PickUp(this);
+        if(type == Type.Cure)
+        {
+            controller.AddHealth(10);
+        }
+        else
+        {
+            controller.PickUp(this);
+        }
+        
         //print("Destroyin");
         Destroy(gameObject);
     }
@@ -41,5 +49,5 @@ public class Item : MonoBehaviour
 
 public enum Type
 {
-    Gold, Core
+    Gold, Core, Cure
 }
