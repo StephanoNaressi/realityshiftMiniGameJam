@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
     bool hasPlayed = false;
 
-    public RawImage img; 
+    public RawImage img;
     public PlayerController controller;
 
     [SerializeField]
@@ -52,10 +52,11 @@ public class PlayerController : MonoBehaviour
 
     public void PickUp(Item t)
     {
-        if(t.type == Type.Core)
+        if (t.type == Type.Core)
         {
-            Cores+=1;
-        } else if(t.type == Type.Gold)
+            Cores += 1;
+        }
+        else if (t.type == Type.Gold)
         {
             Coins += 1;
         }
@@ -66,7 +67,7 @@ public class PlayerController : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         Run();
         if (controller == null) controller = FindObjectOfType<PlayerController>();
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (Input.GetButtonDown("Jump") && (IsGrounded() || GetComponent<PlayerWallJump>().inWall))
         {
             playerSound.PlaySound(0);
             hasPlayed = true;
