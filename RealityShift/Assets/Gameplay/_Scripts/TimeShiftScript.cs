@@ -25,6 +25,7 @@ public class TimeShiftScript : MonoBehaviour
     Sprite[] cooldownBar;
     [SerializeField]
     GameObject cooldownSprite;
+    public int shiftLives;
     private void Start()
     {
         
@@ -34,13 +35,14 @@ public class TimeShiftScript : MonoBehaviour
         isShifted = false;
         shaderM.SetFloat("_IsShift", 0f);
         shaderM.SetFloat("_TimesShifted", 0f);
-        counterText.text = (shiftCount * 10 / 2).ToString();
+        counterText.text = shiftLives.ToString();
     }
     private void Update()
     {
-        if((shiftCount * 10 / 2) > 5)
+        if((shiftCount * 10 / 2) >= shiftLives)
         {
             print("YOUDIED");
+            FindObjectOfType<LevelManager>().LoadNextLevel(4);
         }
         if (Input.GetButtonDown("realityShift"))
         {
@@ -68,7 +70,7 @@ public class TimeShiftScript : MonoBehaviour
             TimeShift();
             timer = startingTimer;
             shiftCount+= 0.2f;
-            counterText.text = (shiftCount * 10 / 2).ToString();
+            counterText.text = Mathf.RoundToInt((shiftLives-(shiftCount * 10 / 2))).ToString();
             shaderM.SetFloat("_TimesShifted", shiftCount);
             return false;
         }
