@@ -69,7 +69,10 @@ public class PlayerController : MonoBehaviour
 
         float scale = HealthLeft / MaxHP; //50
         img.gameObject.GetComponent<RectTransform>().localScale = new Vector3(scale, 1f, 1f);
-
+        if (HealthLeft <= 0)
+        {
+            FindObjectOfType<LevelManager>().LoadNextLevel(4);
+        }
         //print(HealthLeft + ", scale: " + scale);
     }
 
