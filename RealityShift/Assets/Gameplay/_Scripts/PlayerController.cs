@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     int HowFastHeFalls;
     private bool isFacingRight = true;
 
-    public bool hasCore;
+    public int Cores;
 
     public int Coins;
 
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     {
         if(t.type == Type.Core)
         {
-            hasCore = true;
+            Cores+=1;
         } else if(t.type == Type.Gold)
         {
             Coins += 1;
