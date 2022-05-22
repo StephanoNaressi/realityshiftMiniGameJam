@@ -10,6 +10,7 @@ public class ShopOffer : MonoBehaviour
     public Attribute a;
     public TextMeshPro DT;
 
+
     void Start()
     {
         HMT.text = hm.ToString();

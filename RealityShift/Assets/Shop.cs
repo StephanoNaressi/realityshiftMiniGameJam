@@ -23,13 +23,3 @@ public class Shop : MonoBehaviour
        }
     }
 }
-
-public class Attribute
-{
-    public float value;
-    public AType type;
-}
-
-public enum AType{
-    Speed,IncresedShiftTime,TotalLife
-}
