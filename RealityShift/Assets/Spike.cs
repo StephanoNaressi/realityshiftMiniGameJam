@@ -32,8 +32,10 @@ public class Spike : MonoBehaviour
     {
         if(exit.gameObject.tag == "Player")
         {
-            SpikeController.SetBool("Player", false);
+            SpikeController.SetBool("Spike", false);
             damaged = false;
+
+            //print("left + " + SpikeController.GetBool("Spike"));
         }
     }
 }

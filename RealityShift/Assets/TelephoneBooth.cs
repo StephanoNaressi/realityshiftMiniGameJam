@@ -9,6 +9,8 @@ public class TelephoneBooth : MonoBehaviour
     {
         if(c.gameObject.tag != "Player") return;
 
+        if(!c.gameObject.GetComponent<PlayerController>().hasCore) return;
+
         FindObjectOfType<LevelManager>().LoadNextLevel(acutalLvl + 1);
     }
 }

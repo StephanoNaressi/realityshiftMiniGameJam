@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     int HowFastHeFalls;
     private bool isFacingRight = true;
 
+    public bool hasCore;
+
     void Start()
     {
         playerSound = gameObject.GetComponent<SFXManager>();
@@ -44,6 +46,14 @@ public class PlayerController : MonoBehaviour
         damageText.text = h.ToString();
         if (transform.localScale.x < 0) { damageText.transform.localScale *= new Vector2(-1, 1); }
         Destroy(damageText.gameObject, 3f);
+    }
+
+    public void PickUp(Item t)
+    {
+        if(t.type == Type.Core)
+        {
+            hasCore = true;
+        }
     }
 
     void Update()
