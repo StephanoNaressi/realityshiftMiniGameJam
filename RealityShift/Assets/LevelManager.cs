@@ -22,4 +22,9 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene("Credits");
     }
+
+    public void LoadSCene(string name)
+    {
+        SceneManager.LoadScene(name);
+    }
 }

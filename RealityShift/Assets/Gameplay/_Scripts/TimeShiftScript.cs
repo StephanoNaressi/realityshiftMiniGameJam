@@ -13,7 +13,7 @@ public class TimeShiftScript : MonoBehaviour
 
     int ShiftCount;
     [SerializeField]
-    float timer;
+    public float timer;
     float startingTimer;
     float shiftCount;
     [SerializeField]
