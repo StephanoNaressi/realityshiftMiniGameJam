@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     }
     public void LostLevel()
     {
-        SceneManager.LoadScene("LostLvl");
+        SceneManager.LoadScene("GameOver");
     }
     public void WinLevel()
     {
