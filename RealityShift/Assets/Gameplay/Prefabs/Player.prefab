@@ -288,6 +288,7 @@ MonoBehaviour:
   - {fileID: 884132352, guid: 098f2b66bce8816439e15088b94e4857, type: 3}
   - {fileID: 1070074511, guid: 098f2b66bce8816439e15088b94e4857, type: 3}
   cooldownSprite: {fileID: 0}
+  shiftLives: 10
 --- !u!96 &4666122775472852865
 TrailRenderer:
   serializedVersion: 2
