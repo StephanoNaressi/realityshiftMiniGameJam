@@ -6,8 +6,25 @@ public class Shop : MonoBehaviour
 {
     public PlayerController controller;
 
-    void Buy(ShopOffer item)
+    public ShopOffer Offer1;
+    public ShopOffer Offer2;
+    public ShopOffer Offer3;
+
+    public void Buy(int aa)
     {
+        ShopOffer item = null;
+        if(aa == 1)
+        {
+            item = Offer1;
+        }
+        if(aa == 2)
+        {
+            item = Offer2;
+        }
+        if(aa == 3)
+        {
+            item = Offer3;
+        }
         if(controller.Coins < item.hm) return;
        Attribute a = item.a;
        if(a.type == AType.Speed)
