@@ -7,7 +7,7 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
     SFXManager playerSound;
-    [SerializeField] float moveSpeed = 10;
+    [SerializeField]public float moveSpeed = 10;
     [SerializeField] float jumpForce = 10;
     [SerializeField] Transform feet;
     [SerializeField] LayerMask groundLayer;
@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D playerRigid;
     public bool UsingGravity;
     float horizontal;
+
+    public GameObject EscapeUI;
+
+    public TimeShiftScript sc;
 
     bool hasPlayed = false;
 
@@ -39,6 +43,7 @@ public class PlayerController : MonoBehaviour
     {
         playerSound = gameObject.GetComponent<SFXManager>();
         playerRigid = GetComponent<Rigidbody2D>();
+        sc = GetComponent<TimeShiftScript>();
     }
 
     public void AddHealth(float h)
@@ -83,6 +88,12 @@ public class PlayerController : MonoBehaviour
 
         }
 
+        if(Input.GetButtonDown("Escape"))
+        {
+            //StopGame();
+            ShowUI();
+        }
+
         float scale = HealthLeft / MaxHP; //50
         img.gameObject.GetComponent<RectTransform>().localScale = new Vector3(scale, 1f, 1f);
         if (HealthLeft <= 0)
@@ -90,6 +101,11 @@ public class PlayerController : MonoBehaviour
             FindObjectOfType<LevelManager>().LoadNextLevel(4);
         }
         //print(HealthLeft + ", scale: " + scale);
+    }
+
+    public void ShowUI()
+    {
+        EscapeUI.SetActive(true);
     }
 
     private void FixedUpdate()
