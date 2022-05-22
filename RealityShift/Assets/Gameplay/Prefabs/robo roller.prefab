@@ -123,8 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3140503d01432e42a855c7c3b55b4f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkingSpeed: 150
-  runningSpeed: 200
+  walkingSpeed: 1000
+  runningSpeed: 1200
   enemyCanFly: 0
 --- !u!70 &6141063857147656651
 CapsuleCollider2D:
