@@ -7,7 +7,7 @@ public class StartManager : MonoBehaviour
 {
     public void Play(int index)
     {
-        bool isGoingToLevel = SceneManager.GetSceneByName("GameOver") != SceneManager.GetActiveScene();
+        bool isGoingToLevel = SceneManager.GetSceneByName("LostLvl") != SceneManager.GetActiveScene();
         if (isGoingToLevel) { PlayerPrefs.SetInt("currentLevel", index); }
         SceneManager.LoadScene(index);
     }

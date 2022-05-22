@@ -9,4 +9,17 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(n);
     }
+    public void LostLevel()
+    {
+        SceneManager.LoadScene("LostLvl");
+    }
+    public void WinLevel()
+    {
+        SceneManager.LoadScene("WinLvl");
+    }
+
+    public void LoadCredits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
 }

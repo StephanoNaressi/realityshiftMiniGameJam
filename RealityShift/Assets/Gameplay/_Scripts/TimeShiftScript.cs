@@ -42,7 +42,7 @@ public class TimeShiftScript : MonoBehaviour
         if((shiftCount * 10 / 2) >= shiftLives)
         {
             print("YOUDIED");
-            FindObjectOfType<LevelManager>().LoadNextLevel(4);
+            FindObjectOfType<LevelManager>().LostLevel();
         }
         if (Input.GetButtonDown("realityShift"))
         {
