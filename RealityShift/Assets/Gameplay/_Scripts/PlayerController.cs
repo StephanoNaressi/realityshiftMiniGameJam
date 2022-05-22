@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
 
     public bool hasCore;
 
+    public int Coins;
+
     void Start()
     {
         playerSound = gameObject.GetComponent<SFXManager>();
@@ -53,6 +55,9 @@ public class PlayerController : MonoBehaviour
         if(t.type == Type.Core)
         {
             hasCore = true;
+        } else if(t.type == Type.Gold)
+        {
+            Coins += 1;
         }
     }
 
