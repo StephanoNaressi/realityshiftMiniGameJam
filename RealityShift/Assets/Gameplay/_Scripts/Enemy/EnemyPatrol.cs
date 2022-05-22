@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(EnemyMovementController))]
@@ -7,6 +8,9 @@ public class EnemyPatrol : EnemyController
 {
     [SerializeField] private List<Vector2> walkPoints = new List<Vector2>();
     [SerializeField] private bool move = true;
+    [SerializeField] private LayerMask wallDetection;
+    [SerializeField] private Vector2 wallDetectionOffset;
+    bool canChangeWalkpoint = true;
     bool theGameIsRunning;
     int currentWalkPoint;
     Vector2 initialPos;
@@ -19,17 +23,20 @@ public class EnemyPatrol : EnemyController
         movement = GetComponent<EnemyMovementController>();
         initialPos = transform.position;
         theGameIsRunning = true;
+        canChangeWalkpoint = true;
     }
 
     private void Update()
     {
         if (move) { Move(); }
+        Collider2D wallDetectionCol = Physics2D.OverlapCircle(transform.position + (Vector3)wallDetectionOffset * (transform.localEulerAngles.y == 0 ? 1 : -1), 0.5f, wallDetection);
+        if (wallDetectionCol) { ChangeWalkPoint(); }
     }
 
     public void OnCollisionEnter2D(Collision2D c)
     {
         GameObject co = c.gameObject;
-        if(co.tag == "Player")
+        if (co.tag == "Player")
         {
             PlayerController pc = co.GetComponent<PlayerController>();
             pc.AddHealth(-Damage);
@@ -43,8 +50,25 @@ public class EnemyPatrol : EnemyController
         bool isReached = movement.isReachedInObject(finalPlace, movement.enemyCanFly);
         if (isReached)
         {
-            currentWalkPoint++;
-            if (currentWalkPoint == walkPoints.Count) { currentWalkPoint = 0; }
+            ChangeWalkPoint();
+        }
+    }
+
+    void ChangeWalkPoint()
+    {
+        if (!canChangeWalkpoint) { return; }
+        currentWalkPoint++;
+        if (currentWalkPoint == walkPoints.Count) { currentWalkPoint = 0; }
+        StartCoroutine(ChangeWalkPointCooldown());
+    }
+
+    IEnumerator ChangeWalkPointCooldown()
+    {
+        if (canChangeWalkpoint)
+        {
+            canChangeWalkpoint = false;
+            yield return new WaitForSeconds(0.5f);
+            canChangeWalkpoint = true;
         }
     }
 
@@ -57,5 +81,7 @@ public class EnemyPatrol : EnemyController
         {
             Gizmos.DrawSphere(initialPos + walkP, 0.1f);
         }
+
+        Gizmos.DrawWireSphere(transform.position + (Vector3)wallDetectionOffset * (transform.localEulerAngles.y == 0 ? 1 : -1), 0.1f);
     }
 }

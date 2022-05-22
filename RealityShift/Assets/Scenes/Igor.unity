@@ -67361,6 +67361,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4666122775472852864, guid: de8d660902cf04248bb3f09ac22a1e1e, type: 3}
+      propertyPath: shiftLives
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4666122775472852864, guid: de8d660902cf04248bb3f09ac22a1e1e, type: 3}
       propertyPath: counterText
       value: 
       objectReference: {fileID: 1097556334}

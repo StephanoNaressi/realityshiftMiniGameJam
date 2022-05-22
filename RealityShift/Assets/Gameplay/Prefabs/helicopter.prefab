@@ -186,6 +186,10 @@ MonoBehaviour:
   - {x: 2, y: 4}
   - {x: 2, y: 0}
   move: 0
+  wallDetection:
+    serializedVersion: 2
+    m_Bits: 192
+  wallDetectionOffset: {x: 0.5, y: 0.06}
   Damage: 10
 --- !u!114 &5765275490097075058
 MonoBehaviour:
